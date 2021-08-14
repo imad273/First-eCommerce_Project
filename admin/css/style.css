@@ -1,0 +1,227 @@
+/* Stander Style */
+body{
+    background-color: #ddd;
+}
+.btn-primary i{
+    margin-right: .2rem;
+    position: relative;
+    top: 1px;
+}
+textarea{
+    resize: none; 
+    height: 150px;
+}
+/* End Stander Style */
+
+/* Login form style*/
+.login{
+    height: 95vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+form {
+    width: 100%;
+    max-width: 580px;
+    margin: 15px;
+}
+form h2{
+    margin-bottom: 30px;
+}
+form input {
+    margin-bottom: 10px;
+}
+.form-control:focus{
+    box-shadow: none;
+}
+.btn-primary{
+    background-color: #5352ed;
+    border-color: #5352ed;
+    
+}
+.btn-primary:hover{
+    background-color: #3742fa;
+}
+/* End Login form style*/
+
+/* Navbar style */
+.navbar {
+    padding: 5px;
+}
+.navbar-brand{
+    letter-spacing: 5px;
+    font-weight: 600;
+}
+
+.navbar-dark .navbar-nav .nav-link{
+    padding: 10px 20px;
+    margin: 3px;
+}
+.navbar-dark .navbar-nav .nav-link:focus, 
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #fff;
+    background-color: #5352ed;
+    border-radius: 5px;
+}
+.nav-link.active{
+    background-color: #5352ed;
+    border-radius: 5px;
+}
+
+.dropdown-item:hover {
+    background-color: #5352ed;
+    color: #fff;
+}
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.20rem #5352ed; 
+}
+/* End Navbar style */
+
+/* Dashboard style */
+.home-stats .stat{
+    color: #fff;
+    background-color: #5352ed;
+    padding: 15px;
+    font-size: 17px;
+    border-radius: 7px;
+}
+.home-stats .stat i{
+    margin-bottom: 5px;
+    font-size: 35px;
+}
+.home-stats .stat p{
+    margin-bottom: 0px;
+}
+.home-stats .stat span{
+    display: block;
+    font-size: 50px;
+}
+.home-stats .stat span a{
+    color: #fff;
+    text-decoration: none;
+}
+.latest{
+    margin-top: 20px;
+}
+.latest .card-header{
+    padding: 12px;
+    color: #fff;
+    background-color: #212529;
+    font-weight: bold;
+}
+
+.latest ul li{
+    font-size: 16px;
+    font-weight: 500;
+}
+.latest .btn-success{
+    padding: 4px 10px;
+    background-color: #5352ed;
+    border: none;
+}
+.latest .btn-success:hover{
+    background-color: #3742fa;
+}
+.latest i{
+    position: relative;
+    top: 1px;
+    right: 1px;
+}
+/* End Dashboard style */
+
+/* Manage member Page style */
+/* Table */
+table{
+    box-shadow: 3px 4px 20px 0px #ccc;
+}
+.main-row{
+    background-color: #212529;
+    color: #fff;
+}
+tr td{
+    vertical-align: middle;
+}
+.data-table{
+    background-color: #f8f8f8;
+    border-color: #ddd;
+    font-weight: 500;
+}
+.data-table .btn-success{
+    margin: 2px;
+    color: #fff;
+    background-color: #08d401d2;
+    border: none;
+}
+.data-table .btn-success i{
+    margin-right: .2rem;
+    position: relative;
+    top: 1px;
+}
+.data-table .btn-success:hover{
+    background-color: #08d401;
+}
+.data-table .btn-danger{
+    margin: 2px;
+    color: #fff;
+    background-color: #ff0f27d8;
+    border: none;
+    vertical-align: middle;
+}
+.data-table .btn-danger i{
+    margin-right: .2rem;
+    position: relative;
+    top: 1px;
+}
+.data-table .btn-danger:hover{
+    background-color: #ff0019;
+}
+
+/* End Manage member Page style */
+/* Categories Page style */
+.categ .card-header{
+    padding: 12px;
+    color: #fff;
+    background-color: #5352ed;
+    font-weight: bold;
+}
+.categ-list li {
+    padding: 5px 20px;
+    font-size: 17px; 
+    font-weight: 500;
+}
+.categ-list .btn-success{
+    margin: 2px;
+    color: #fff;
+    background-color: #08d401d2;
+    border: none;
+    padding: 4px 10px;
+    height: 33px;
+}
+.categ-list .btn-success i{
+    margin-right: .2rem;
+    position: relative;
+    top: 1px;
+}
+.categ-list .btn-success:hover{
+    background-color: #08d401;
+}
+.categ-list .btn-danger{
+    margin: 2px;
+    color: #fff;
+    background-color: #ff0f27d8;
+    border: none;
+    padding: 4px 10px;
+    height: 33px;
+}
+.categ-list .btn-danger i{
+    margin-right: .2rem;
+    position: relative;
+    top: 1px;
+}
+.categ-list .btn-danger:hover{
+    background-color: #ff0019;
+}
+/* End Categories Page style */
+
+/* Items Page style */
+/* End Items Page style */
