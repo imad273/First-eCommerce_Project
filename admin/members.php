@@ -6,22 +6,20 @@
     // import required file
     require "config.php";
     include "func.php";
-    include "includes/languages/english.php";
     include "includes/template/header.php";
     include "includes/template/navbar.php";
     
+    // Check if user come from login page or External link
     if(isset($_SESSION['admin'])){
         $link = isset($_GET['action']) ? $_GET['action'] : "manage";
     
         if($link == "manage"){ // manage members page 
-        
             $stmt = $con->prepare("SELECT * FROM users WHERE GroupID != 1");
             $stmt->execute();
             $rows = $stmt->fetchAll();
-            
         ?> 
             <h1 class="text-center" style="padding: 20px;">Manage Member</h1>
-            <div class="container">
+            <div class="container member">
                 <div class="table-responsive">
                     <table class="table text-center table-bordered" style="border-color: #eee;">
                         <tr class="main-row">
@@ -53,8 +51,7 @@
                 <a href='members.php?action=add' class="btn btn-primary float-end"><i class='bx bxs-add-to-queue'></i> Add new members</a>
             </div>
         <?php 
-        } elseif($link == "add"){ // add members ?>
-
+        } elseif($link == "add"){ // add members page ?>
             <h1 class="text-center" style="padding: 20px;">Add New Member</h1>
             <div class="container">
                 <form class="m-auto pt-2" method="POST" action="?action=insert">
@@ -85,13 +82,11 @@
                     <button type="submit" class="btn btn-primary float-end mb-3" style="width: 80px;">Save</button>
                 </form>
             </div>
-    
         <?php
-        } elseif($link == "insert"){ // add memebrs -> insert memeber 
-    
+        } elseif($link == "insert"){ // insert memeber page 
             echo "<h1 class='text-center m-4'>Add New Member</h1>";
             echo "<div class='container'>";
-    
+
             $value = $_POST['username'];
             $check = checkItems("UserName", "users", "$value");
             if($check == 1){
@@ -99,13 +94,10 @@
                 echo "<a href='members.php?action=add' class='btn btn-primary m-2 float-end'><i class='bx bx-arrow-back m-1'></i> Back To Add member page</a>";
             } else {
                 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                    // Get data from the form
-                    $username = $_POST['username'];
-                    $password = $_POST['password'];
-                    $email    = $_POST['email'];
-                    $name     = $_POST['name'];
-                    // Hash password
-                    $hashPass = sha1($_POST['password']);
+                    $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
+                    $password = filter_var(sha1($_POST['password']), FILTER_SANITIZE_STRING);
+                    $email    = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
+                    $name     = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
     
                     // Validate The form
                     $formError = array();
@@ -128,7 +120,6 @@
                     foreach($formError as $error){
                         echo $error;
                     }
-    
                     // check if there's no error 
                     if(empty($formError)){
                         // Insert data in Database with this info
@@ -137,21 +128,18 @@
                         // echo Success Message
                         echo "<p class='alert alert-success'> Data Inserted Successful, " . $stmt->rowCount() . ' Record Update</p>';
                         ?>
-                        
                         <a href="members.php?action=add" class="btn btn-primary m-2 float-end"><i class='bx bx-arrow-back m-1'></i> Back To Add page</a>
             <?php 
                     }
                 } else{
-                        $errorMsg = "You can't Browse this Page directly";
-                        redirectHome($errorMsg);
+                    $errorMsg = "You can't Browse this Page directly";
+                    redirectHome($errorMsg);
                 }
             }
             echo "</div>";
-    
-        } elseif ($link == "edit") { // Edit memeber Page 
+        } elseif ($link == "edit") { // Edit memeber page 
             // check if Get request 'id' is numeric 
-            $id = isset($_GET['id']) && is_numeric($_GET['id']) ? intval($_GET['id']) : "sory";
-            
+            $id = isset($_GET['id']) && is_numeric($_GET['id']) ? intval($_GET['id']) : 0;
             // Select date 'UserID' from database
             $stmt = $con->prepare("SELECT * FROM users WHERE UserID = '$id'");
             $stmt->execute();
@@ -159,7 +147,6 @@
     
             // Make sure id is exist in database 
             if($stmt->rowCount() === 1){ ?>
-                <!-- if there's Such id, Show Form edit -->
                 <h1 class="text-center" style="padding: 20px;">Edit Member</h1>
                 <div class="container">
                     <form class="m-auto pt-2" method="POST" action="?action=update">
@@ -192,7 +179,6 @@
                         <button type="submit" class="btn btn-primary float-end mb-3" style="width: 80px;">Save</button>
                     </form>
                 </div>
-            
             <?php 
             // Else Show error message
             } else {
@@ -200,12 +186,12 @@
                 redirectHome($errorMsg);
             }
         ?>
-                 
         <?php 
-        } elseif ($link == "update") { // edit member -> Update member
+        } elseif ($link == "update") { // Update member page
             echo "<h1 class='text-center m-4'>Member Update</h1>";
             echo "<div class='container'>";
-    
+            
+            // check if username exist in database or not
             $value = $_POST['username'];
             $check = checkItems("UserName", "users", "$value");
             if($check == 1){
@@ -214,11 +200,10 @@
             <?php
             } else {
                 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                    // Get data from form
                     $userid   = $_POST['userid'];
-                    $username = $_POST['username'];
-                    $email    = $_POST['email'];
-                    $name     = $_POST['name'];
+                    $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
+                    $email    = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
+                    $name     = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
     
                     // Password trick
                     if(empty($_POST['newpassword'])){
@@ -226,7 +211,6 @@
                     } else {
                         $pass = sha1($_POST['newpassword']);
                     }
-    
                     // Validate The form
                     $formError = array();
                     if(empty($username)){
@@ -248,7 +232,6 @@
                     foreach($formError as $error){
                         echo $error;
                     }
-    
                     // check if there's no error 
                     if(empty($formError)){
                         // Update data to Database with this info
@@ -256,8 +239,7 @@
                         $stmt->execute();
                         // echo Success Message
                         echo "<p class='alert alert-success'> Data Update Successful, " . $stmt->rowCount() . ' Record Update</p>';
-                        ?>
-                        
+                    ?>
                         <a href="members.php?action=edit&id=<?php echo $_SESSION['ID']; ?>" class="btn btn-primary m-2 float-end"><i class='bx bx-arrow-back m-1'></i> Back To edit page</a>
                 <?php 
                     }  
@@ -267,13 +249,11 @@
                 } 
             }
             echo "</div>";
-    
         } elseif($link == "delete"){ // delete member page
             echo "<h1 class='text-center m-4'>Delete Member</h1>";
             echo "<div class='container'>";
             // check if Get request 'id' is numeric 
             $id = isset($_GET['id']) && is_numeric($_GET['id']) ? intval($_GET['id']) : "sory";
-            
             // Select 'UserID' from database
             $stmt = $con->prepare("SELECT * FROM users WHERE UserID = '$id'");
             $stmt->execute();
@@ -282,7 +262,6 @@
             if($stmt->rowCount() === 1){
                 $stmt = $con->prepare("DELETE FROM users WHERE UserID = '$id'");
                 $stmt->execute();
-                
                 echo "<p class='alert alert-info'> Data Update Successful, " . $stmt->rowCount() . ' Record Deleted</p>';
                 echo '<a href="members.php" class="btn btn-primary m-2 float-end"><i class="bx bx-arrow-back m-1"></i> Back To Manage Members page</a>';
             }
@@ -293,8 +272,11 @@
                 echo "<p class='alert alert-danger m-5'>error: Page not exsit</p>";
             echo "<div>";
         }
+    } else {
+        // if user not login go to the login form
+        header('location: index.php');
+        exit();
     }
-    
 
     include "includes/template/footer.php";  
 ?>

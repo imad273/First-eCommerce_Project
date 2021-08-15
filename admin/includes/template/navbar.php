@@ -8,19 +8,19 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="./index.php"><?php echo lang("home_admin") ?></a>
+          <a class="nav-link active" aria-current="page" href="./index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="categories.php"><?php echo lang("categories") ?></a>
+          <a class="nav-link" href="categories.php">Categories</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="items.php"><?php echo lang("items") ?></a>
+            <a class="nav-link" href="items.php">Items</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="members.php"><?php echo lang("members") ?></a>
+            <a class="nav-link" href="members.php">Members</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#"><?php echo lang("statistics") ?></a>
+            <a class="nav-link" href="#">Statistics</a>
         </li>
 
         <li class="nav-item dropdown">
@@ -28,11 +28,11 @@
             <?php echo $_SESSION['admin']; ?>
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="members.php?action=edit&id=<?php echo $_SESSION['ID']; ?>"><?php echo lang("edit Profil") ?></a></li>
-            <li><a class="dropdown-item" href="#"><?php echo lang("settings") ?></a></li>
+            <li><a class="dropdown-item" href="members.php?action=edit&id=<?php echo $_SESSION['ID']; ?>">Edit Profil</a></li>
+            <li><a class="dropdown-item" href="#">Admins</a></li>
             <li><a class="dropdown-item" href="../index.php">Visite Site</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="./logout.php"><?php echo lang("logout") ?></a></li>
+            <li><a class="dropdown-item" href="./logout.php">Logout</a></li>
           </ul>
         </li>
         

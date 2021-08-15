@@ -5,7 +5,6 @@
     // import requied file 
     require "admin/config.php";
     include "func.php";
-    include "includes/languages/english.php";
     include "includes/template/header.php";
     include "includes/template/navbar.php";
 
@@ -38,7 +37,7 @@
 
 <?php
     } else {
-        header('location: index.php');
+        header('location: login.php');
         exit();
     }
     include "includes/template/footer.php";

@@ -6,7 +6,6 @@
     // import requied file 
     require "config.php";
     include "func.php";
-    include "includes/languages/english.php";
     include "includes/template/header.php";
     include "includes/template/navbar.php";
 
@@ -84,10 +83,10 @@
            </div>
         </div>
        
-       
     <?php
     } else {
-        header("location: index.php");
+        // if user not login go to the login form
+        header('location: index.php');
         exit();
     }
 ?>

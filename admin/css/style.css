@@ -1,6 +1,6 @@
 /* Stander Style */
 body{
-    background-color: #ddd;
+    background-color: #eee;
 }
 .btn-primary i{
     margin-right: .2rem;
@@ -109,7 +109,6 @@ form input {
     background-color: #212529;
     font-weight: bold;
 }
-
 .latest ul li{
     font-size: 16px;
     font-weight: 500;
@@ -146,38 +145,36 @@ tr td{
     border-color: #ddd;
     font-weight: 500;
 }
-.data-table .btn-success{
+.data-table .btn{
+    width: 94px;
     margin: 2px;
     color: #fff;
-    background-color: #08d401d2;
     border: none;
 }
-.data-table .btn-success i{
+.data-table .btn i{
     margin-right: .2rem;
     position: relative;
     top: 1px;
+}
+.data-table .btn-success{
+    background-color: #08d401d2;
 }
 .data-table .btn-success:hover{
     background-color: #08d401;
 }
 .data-table .btn-danger{
-    margin: 2px;
-    color: #fff;
     background-color: #ff0f27d8;
-    border: none;
-    vertical-align: middle;
 }
-.data-table .btn-danger i{
-    margin-right: .2rem;
-    position: relative;
-    top: 1px;
-}
+
 .data-table .btn-danger:hover{
     background-color: #ff0019;
 }
-
 /* End Manage member Page style */
+
 /* Categories Page style */
+.categ{
+    box-shadow: 3px 4px 20px 0px #ccc;
+}
 .categ .card-header{
     padding: 12px;
     color: #fff;
@@ -224,4 +221,10 @@ tr td{
 /* End Categories Page style */
 
 /* Items Page style */
+.items table .desc{
+    width: 260px;
+}
+.items table .btn{
+    width: 94px;
+}
 /* End Items Page style */

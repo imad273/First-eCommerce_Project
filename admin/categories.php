@@ -6,7 +6,6 @@
     // import required file
     require "config.php";
     include "func.php";
-    include "includes/languages/english.php";
     include "includes/template/header.php";
     include "includes/template/navbar.php";
 
@@ -22,7 +21,7 @@
             <div class="container w-75">
                 <h1 class="text-center" style="padding: 20px;">Manage Categories</h1>
                 <div class="card categ">
-                    <div class="card-header">
+                    <div class="card-header bg-dark">
                         Categories
                     </div>
                     <ul class="list-group list-group-flush categ-list"> <?php
@@ -40,7 +39,6 @@
 
         <?php
         } elseif ($link == "edit"){ // edit category page
-
             $id = isset($_GET['id']) && is_numeric($_GET['id']) ? intval($_GET['id']) : "id is not exist";
             $stmt = $con->prepare("SELECT * FROM categories WHERE ID = ?");
             $stmt->execute(array($id));
@@ -65,7 +63,6 @@
                         <button type="submit" class="btn btn-primary float-end mb-3" style="width: 80px;">Save</button>
                     </form>
                 </div>
-            
             <?php
             } else {
                 echo "id is not exist";
@@ -81,8 +78,8 @@
             <?php } else{
                 if($_SERVER['REQUEST_METHOD'] == 'POST'){
                     $id     = $_POST['id'];
-                    $name   = $_POST['name'];
-                    $desc   = $_POST['desc'];
+                    $name   = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
+                    $desc   = filter_var($_POST['desc'], FILTER_SANITIZE_STRING);
 
                     $stmt = $con->prepare("UPDATE categories SET Name = ?, Description = ? WHERE ID = '$id'");
                     $stmt->execute(array($name, $desc));
@@ -96,8 +93,7 @@
             }
             echo "</div>";
             
-        } elseif ($link == "add"){ ?>
-
+        } elseif ($link == "add"){ // add new categories page ?>
             <h1 class="text-center" style="padding: 20px;">Add New category</h1>
             <div class="container">
                 <form class="m-auto pt-2" method="POST" action="?action=insert">
@@ -116,7 +112,6 @@
                     <button type="submit" class="btn btn-primary float-end mb-3" style="width: 80px;">Add</button>
                 </form>
             </div>
-
         <?php
         } elseif ($link == "insert"){ // insert categories page 
             $value = $name = $_POST['name'];
@@ -127,8 +122,8 @@
                 echo "</div>";
             } else {
                 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                    $name = $_POST['name'];
-                    $desc = $_POST['desc'];
+                    $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
+                    $desc = filter_var($_POST['desc'], FILTER_SANITIZE_STRING);
     
                     $stmt = $con->prepare("INSERT INTO categories (Name , Description) VALUE (?, ?)");
                     $stmt->execute(array($name, $desc));
@@ -143,10 +138,9 @@
                     redirectHome($errorMsg);
                 }
             }
-        } elseif($link == "delete") {
+        } elseif($link == "delete") { // delete categories page
             echo "<h1 class='text-center m-4'>Delete Catrgory</h1>";
             echo "<div class='container'>";
-            
             $id = isset($_GET['id']) && is_numeric($_GET['id']) ? intval($_GET['id']) : 0;
             $stmt = $con->prepare("SELECT * FROM categories WHERE ID = ?");
             $stmt->execute(array($id));
@@ -156,16 +150,16 @@
                 $stmt->execute(array($id));
                 echo "<p class='alert alert-info'> Delete Successful, " . $stmt->rowCount() . ' Record Deleted</p>';
                 echo '<a href="categories.php" class="btn btn-primary m-2 float-end"><i class="bx bx-arrow-back m-1"></i> Back To Manage categories page</a>';
-                
             } else {
                 echo "<p class='alert alert-danger m-5'>error: Page not exsit</p>";
             }
-
             echo "</div>";
         }
+    } else {
+        // if user not login go to the login form
+        header('location: index.php');
+        exit();
     }
-?>
 
-<?php
     include "includes/template/footer.php";
 ?>

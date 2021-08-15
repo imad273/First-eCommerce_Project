@@ -6,7 +6,6 @@
     // import required file
     require "config.php";
     include "func.php";
-    include "includes/languages/english.php";
     include "includes/template/header.php";
     include "includes/template/navbar.php";
 
@@ -20,13 +19,13 @@
             $rows = $stmt->fetchAll();
         ?>
             <h1 class="text-center" style="padding: 20px;">Manage Items</h1>
-            <div class="container">
+            <div class="container items">
                 <div class="table-responsive">
                     <table class="table text-center table-bordered" style="border-color: #eee;">
                         <tr class="main-row">
                             <td class="fw-bold">#ID</td>
                             <td class="fw-bold">Name</td>
-                            <td class="fw-bold">Description</td>
+                            <td class="fw-bold desc">Description</td>
                             <td class="fw-bold">Price</td>
                             <td class="fw-bold">Status</td>
                             <td class="fw-bold">Category</td>
@@ -64,8 +63,7 @@
                 </div>
             <?php
             echo "<a href='?action=add' class='btn btn-primary float-end mt-3'><i class='bx bxs-add-to-queue'></i> Add New items</a>";
-
-        } elseif ($link == "add"){ // Add new item?>
+        } elseif ($link == "add"){ // Add items  ?>
             <h1 class="text-center" style="padding: 20px;">Add New Item</h1>
             <div class="container">
                 <form class="m-auto pt-2" method="POST" action="?action=insert" enctype="multipart/form-data">
@@ -124,11 +122,11 @@
                 </form>
             </div>
         <?php
-        } elseif ($link == "insert"){ // insert the new item
+        } elseif ($link == "insert"){ // insert items page
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                $name       = $_POST['name'];
-                $desc       = $_POST['desc'];
-                $price      = $_POST['price'];
+                $name       = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
+                $desc       = filter_var($_POST['desc'], FILTER_SANITIZE_STRING);
+                $price      = filter_var($_POST['price'], FILTER_SANITIZE_STRING);
                 $status     = $_POST['status'];
                 $category   = $_POST['cat'];
                 // images
@@ -136,9 +134,7 @@
                 $imageTmp  = $_FILES['img']['tmp_name'];
                 $imagesAllowdExtension = array("jpeg", "jpg", "png", "gif");
                 $imagepath = strtolower(pathinfo($imageName, PATHINFO_EXTENSION));
-                
-                
-
+            
                 $formErrors = array();
                 if($status == 0){
                     $formErrors[] = "You Most be choose Status"; 
@@ -164,7 +160,6 @@
                     
                     $stmt = $con->prepare("INSERT INTO items (Name, Description, Price, Date, Status, cat_ID, images) VALUE (?, ?, ?, now(), ?, ?, ?)");
                     $stmt->execute(array($name, $desc, $price, $status, $category, $image));
-                
                     // echo Success Message
                     echo "<div class='container mt-4'>";
                         echo "<p class='alert alert-success'> Item is added Successful, " . $stmt->rowCount() . ' Record Update</p>';
@@ -176,14 +171,14 @@
                 redirectHome($errorMsg);
             }
 
-        } elseif ($link == "edit"){ // edit the item
+        } elseif ($link == "edit"){ // edit items page
             $id = isset($_GET['id']) && is_numeric($_GET['id']) ? intval($_GET['id']) : "Id is not exist";
             $stmt = $con->prepare("SELECT * FROM items WHERE ItemID = ?");
             $stmt->execute(array($id));
             $ftc = $stmt->fetch();
 
+            // check if item exist in database
             if($stmt->rowCount() == 1){ ?>
-
                 <h1 class="text-center" style="padding: 20px;">Edit Item</h1>
                 <div class="container">
                     <form class="m-auto pt-2" method="POST" action="?action=update" enctype="multipart/form-data">
@@ -193,9 +188,7 @@
                                 <input type="text" value="<?php echo $ftc['Name'] ?>" class="form-control" name="name" required="required" autocomplete="off" placeholder="Name">
                             </div>
                         </div>
-
                             <input type="hidden" name="id" value="<?php echo $ftc['ItemID'] ?>">
-                        
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label fw-bold">Description</label>
                             <div class="col-sm-10">
@@ -249,15 +242,14 @@
             }
             echo "</div>";
         
-        }elseif ($link == "update"){ // update the item
-            
+        }elseif ($link == "update"){ // update items page
             echo "<h1 class='text-center m-4'>Item Update</h1>";
             echo "<div class='container'>";
                 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                    $id         = $_POST['id'];
-                    $name       = $_POST['name'];
-                    $desc       = $_POST['desc'];
-                    $price      = $_POST['price'];
+                    $id         = filter_var($_POST['id'], FILTER_SANITIZE_STRING);
+                    $name       = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
+                    $desc       = filter_var($_POST['desc'], FILTER_SANITIZE_STRING);
+                    $price      = filter_var($_POST['price'], FILTER_SANITIZE_STRING);
                     $status     = $_POST['status'];
                     $category   = $_POST['cat'];
                     // image 
@@ -272,29 +264,24 @@
                     } else {
                         $image = $_POST['old-img'];
                     }
-                    /*
-                    $image = rand(0, 1000000) . "_" . $imageName;
-                    move_uploaded_file($imageTmp, "uploads\images\\" . $image);
-*/
+                    
                     $stmt = $con->prepare("UPDATE items SET Name = ?, Description = ?, Price = ?, Status = ?, Cat_ID = ?, images = ? WHERE ItemID = '$id'");
                     $stmt->execute(array($name, $desc, $price, $status, $category, $image));
-
                     echo "<p class='alert alert-success'> Data Update Successful, " . $stmt->rowCount() . ' Record Update</p>'; ?>          
                     <a href="items.php" class="btn btn-primary m-2 float-end"><i class='bx bx-arrow-back m-1'></i> Back To manage Items page</a>
                 <?php
                 } else {
                     echo "you can't brows this page directly";
                 }
-            
             echo "</div>";
-
-        }elseif ($link == "delete"){ // delete the item
+        }elseif ($link == "delete"){ // delete items page
             echo "<h1 class='text-center m-4'>Delete Item</h1>";
             echo "<div class='container'>";
             $id = isset($_GET['id']) && is_numeric($_GET['id']) ? intval($_GET['id']) : "Id is not exist";
             $stmt = $con->prepare("SELECT * FROM items WHERE ItemID = ?");
             $stmt->execute(array($id));
 
+            // check if the item exist in database
             if($stmt->rowCount() == 1){
                 $stmt = $con->prepare("DELETE FROM items WHERE ItemID = ?");
                 $stmt->execute(array($id));
@@ -306,12 +293,11 @@
             }
             echo "<div>";
         } 
+    } else {
+        // if user not login go to the login form
+        header('location: index.php');
+        exit();
     }
-?>
 
-
-
-
-<?php
     include "includes/template/footer.php";  
 ?>
