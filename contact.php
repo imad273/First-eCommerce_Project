@@ -15,7 +15,6 @@
         $headers = "From: " . $from . "\r\n";
         
         mail("abbadimad0123@gmail.com", $subject, $message, $headers);
-
     }
       
 ?>

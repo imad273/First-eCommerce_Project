@@ -5,7 +5,6 @@
     // import requied file 
     require "admin/config.php";
     include "func.php";
-    include "includes/languages/english.php";
     include "includes/template/header.php";
     include "includes/template/navbar.php";
 
