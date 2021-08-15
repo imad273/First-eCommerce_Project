@@ -19,8 +19,12 @@
             
             ?>
             <div class="container w-75">
-                <h1 class="text-center" style="padding: 20px;">Manage Categories</h1>
+                <h1 class="text-center" style="padding: 15px;">Manage Categories</h1>
+                <div class="add-btn">
+                    <a href='?action=add' class="btn btn-primary"><i class="bx bxs-add-to-queue"></i>Add New Category</a>
+                </div>
                 <div class="card categ">
+                    
                     <div class="card-header bg-dark">
                         Categories
                     </div>
@@ -34,7 +38,6 @@
                         ?>
                     </ul>
                 </div>
-                <a href='?action=add' class="btn btn-primary float-end mt-3">Add New Category</a>
             </div>    
 
         <?php

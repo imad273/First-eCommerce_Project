@@ -29,7 +29,7 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="members.php?action=edit&id=<?php echo $_SESSION['ID']; ?>">Edit Profil</a></li>
-            <li><a class="dropdown-item" href="#">Admins</a></li>
+            <li><a class="dropdown-item" href="admins.php">Admins</a></li>
             <li><a class="dropdown-item" href="../index.php">Visite Site</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="./logout.php">Logout</a></li>

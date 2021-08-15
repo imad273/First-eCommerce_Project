@@ -18,8 +18,11 @@
             $stmt->execute();
             $rows = $stmt->fetchAll();
         ?> 
-            <h1 class="text-center" style="padding: 20px;">Manage Member</h1>
+            <h1 class="text-center" style="padding: 15px;">Manage Member</h1>
             <div class="container member">
+                <div class="add-btn">
+                    <a href='members.php?action=add' class="btn btn-primary float-end"><i class='bx bxs-add-to-queue'></i> Add new members</a>
+                </div>
                 <div class="table-responsive">
                     <table class="table text-center table-bordered" style="border-color: #eee;">
                         <tr class="main-row">
@@ -48,7 +51,6 @@
                         ?>
                     </table>
                 </div>
-                <a href='members.php?action=add' class="btn btn-primary float-end"><i class='bx bxs-add-to-queue'></i> Add new members</a>
             </div>
         <?php 
         } elseif($link == "add"){ // add members page ?>

@@ -172,6 +172,11 @@ tr td{
 /* End Manage member Page style */
 
 /* Categories Page style */
+.add-btn{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
 .categ{
     box-shadow: 3px 4px 20px 0px #ccc;
 }
