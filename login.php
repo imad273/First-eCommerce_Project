@@ -13,11 +13,13 @@
         $username = $_POST['user'];
         $password = sha1($_POST['password']);
 
-        $stmt = $con->prepare("SELECT UserName, Password FROM users WHERE UserName = ? AND Password = ?");
+        $stmt = $con->prepare("SELECT * FROM users WHERE UserName = ? AND Password = ?");
         $stmt->execute(array($username, $password));
-
+        $info = $stmt->fetch();
+        
         if($stmt->rowCount() > 0){
             $_SESSION['username'] = $username;
+            $_SESSION['userid']   =  $info["UserID"];
 
             header('location: index.php');
         } else {

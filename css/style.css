@@ -110,4 +110,16 @@ form input{
     font-weight: bold;
     padding: 12px;
 }
-/* End show items style*/
+.detail .card .card-body img{
+    padding: 5px ;
+    width: 200px; 
+    float: left;
+}
+.conf .btns{
+    display: flex;
+    justify-content: flex-end;
+}
+.conf .btns a:first-child{
+    margin-right: 8px;
+}
+/* End showItems page style*/

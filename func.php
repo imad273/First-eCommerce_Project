@@ -11,7 +11,7 @@
     }
 
     // check item
-    function checkItem($table, $select, $value){
+    function checkItems($table, $select, $value){
         global $con;
         $stmt = $con->prepare("SELECT * FROM $table WHERE $select = '$value'");
         $stmt->execute();

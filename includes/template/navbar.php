@@ -44,7 +44,7 @@
           <?php 
             if(isset($_SESSION['username'])){
               echo "<ul class='dropdown-menu' aria-labelledby='navbarDropdown'>";
-                echo "<li><a class='dropdown-item' href='#'>Edit Profil</a></li>";
+                echo "<li><a class='dropdown-item' href='profile.php?action=edit&id=" . $_SESSION['userid'] . "'>Edit Profil</a></li>";
                 echo "<li><a class='dropdown-item' href='profile.php'>My Profile</a></li>";
                 echo "<li><hr class='dropdown-divider'></li>";
                 echo "<li><a class='dropdown-item' href='logout.php'>Logout</a></li>";

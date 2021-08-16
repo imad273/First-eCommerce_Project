@@ -24,7 +24,7 @@
     }
 
     // Check Items Function
-    function checkItems( $select, $from, $value){
+    function checkItems($select, $from, $value){
         global $con;
 
         $statement = $con->prepare("SELECT $select FROM $from WHERE $select = '$value'");

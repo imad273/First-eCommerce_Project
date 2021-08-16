@@ -186,9 +186,7 @@
             } else {
                 $errorMsg ="error: No such Id";
                 redirectHome($errorMsg);
-            }
-        ?>
-        <?php 
+            } 
         } elseif ($link == "update") { // Update member page
             echo "<h1 class='text-center m-4'>Member Update</h1>";
             echo "<div class='container'>";
@@ -198,7 +196,7 @@
             $check = checkItems("UserName", "users", "$value");
             if($check == 1){
                 echo "<p class='alert alert-danger'>UserName is already taken</p>"; ?>
-                <a href='members.php?action=edit&id=<?php echo $_SESSION['ID'] ?>' class='btn btn-primary m-2 float-end'><i class='bx bx-arrow-back m-1'></i> Back To edit page</a>
+                <a href='members.php?action=edit&id=<?php echo $_SESSION['userid'] ?>' class='btn btn-primary m-2 float-end'><i class='bx bx-arrow-back m-1'></i> Back To edit page</a>
             <?php
             } else {
                 if($_SERVER['REQUEST_METHOD'] == 'POST'){
