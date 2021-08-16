@@ -17,7 +17,7 @@
         foreach($items as $item){ ?>
                 <div class="col-sm-6 col-md-3">
                     <div class="card">
-                        <img src="images/avatar.jpg" class="card-img-top">
+                    <img src="admin/uploads/images/<?php echo $item['images'] ?>" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $item['Name'] ?></h5>
                             <p class="card-text"><?php echo $item['Description'] ?></p>

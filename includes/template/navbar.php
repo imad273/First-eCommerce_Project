@@ -24,10 +24,6 @@
             ?>
           </ul>
         </li>
-
-        <li class="nav-item">
-            <a class="nav-link" href="items.php">Items</a>
-        </li>
         <li class="nav-item">
             <a class="nav-link" href="contact.php">Contact</a>
         </li>
