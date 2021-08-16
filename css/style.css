@@ -1,6 +1,6 @@
 :root{
-    --btn: #3115EA;
-    --btnhover: #5A43EF
+    --btn: #1E3DE1;
+    --btnhover: #2444FF;
 }
 .btn-primary{
     background-color: var(--btn);

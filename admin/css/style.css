@@ -1,6 +1,6 @@
 :root{
-    --btn: #3115EA;
-    --btnhover: #5A43EF
+    --btn: #1E3DE1;
+    --btnhover: #2444FF;
 }
 .btn-primary{
     background-color: var(--btn);
@@ -82,7 +82,7 @@ form input {
 /* Dashboard style */
 .home-stats .stat{
     color: #fff;
-    background-color: #5352ed;
+    background-color: var(--btn);
     padding: 15px;
     font-size: 17px;
     border-radius: 7px;
@@ -117,11 +117,11 @@ form input {
 }
 .latest .btn-success{
     padding: 4px 10px;
-    background-color: #5352ed;
+    background-color: var(--btn);
     border: none;
 }
 .latest .btn-success:hover{
-    background-color: #3742fa;
+    background-color: var(--btnhover);
 }
 .latest i{
     position: relative;
