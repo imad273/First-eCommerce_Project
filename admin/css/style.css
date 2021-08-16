@@ -104,6 +104,7 @@ form input {
 }
 .latest{
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 .latest .card-header{
     padding: 12px;
