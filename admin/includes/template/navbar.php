@@ -19,7 +19,6 @@
         <li class="nav-item">
             <a class="nav-link" href="members.php">Members</a>
         </li>
-
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <?php echo $_SESSION['admin']; ?>
@@ -27,7 +26,7 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="members.php?action=edit&id=<?php echo $_SESSION['ID']; ?>">Edit Profil</a></li>
             <li><a class="dropdown-item" href="admins.php">Admins</a></li>
-            <li><a class="dropdown-item" href="../index.php">Visite Site</a></li>
+            <li><a class="dropdown-item" href="../index.php">Visite Store</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="./logout.php">Logout</a></li>
           </ul>
