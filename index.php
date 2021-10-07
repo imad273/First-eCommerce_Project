@@ -19,7 +19,7 @@
     </div>
 </section>
 
-<section class="last-prod  pb-5">
+<section class="last-prod pb-5">
     <div class="container home">
         <h1 class="text-center">Latest offers</h1>
         <?php

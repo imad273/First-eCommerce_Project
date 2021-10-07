@@ -1,5 +1,5 @@
 <!-- Navbar Template * -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-light">
   <div class="container">
     <a class="navbar-brand" href="dashboard.php">TRUC<sapn style="color: #5352ed;">TRY</sapn></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,9 +18,6 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="members.php">Members</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Statistics</a>
         </li>
 
         <li class="nav-item dropdown">

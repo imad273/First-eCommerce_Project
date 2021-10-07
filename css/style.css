@@ -43,6 +43,7 @@
 .navbar-light .navbar-nav .nav-link{
     padding: 10px 20px;
     margin: 3px;
+    font-weight: 500;
     border-radius: 5px;
 }
 .navbar-light .navbar-nav .nav-link:focus, 

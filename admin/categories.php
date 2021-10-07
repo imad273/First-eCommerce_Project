@@ -24,8 +24,7 @@
                     <a href='?action=add' class="btn btn-primary"><i class="bx bxs-add-to-queue"></i>Add New Category</a>
                 </div>
                 <div class="card categ">
-                    
-                    <div class="card-header bg-dark">
+                    <div class="card-header">
                         Categories
                     </div>
                     <ul class="list-group list-group-flush categ-list"> <?php

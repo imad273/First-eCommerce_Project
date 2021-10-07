@@ -1,6 +1,7 @@
 :root{
-    --btn: #1E3DE1;
-    --btnhover: #2444FF;
+    --btn: #ff5c62;
+    --btn2: #4F3AB7;
+    --btnhover: #ff434a;
 }
 .btn-primary{
     background-color: var(--btn);
@@ -9,8 +10,13 @@
 .btn-primary:hover{
     background-color: var(--btnhover);
 }
-body{
-    background-color: #eee;
+.btn-primary:active, .btn-primary:focus {
+    background-color: var(--btnhover);
+    border-color: var(--btnhover);
+    box-shadow: none;
+}
+.btn-primary:active:focus {
+    box-shadow: none;
 }
 .btn-primary i{
     margin-right: .2rem;
@@ -49,29 +55,31 @@ form input {
 /* Navbar style */
 .navbar {
     padding: 5px;
+    background-color: rgb(247, 247, 247);
 }
 .navbar-brand{
     letter-spacing: 5px;
     font-weight: 600;
 }
 
-.navbar-dark .navbar-nav .nav-link{
+.navbar-light .navbar-nav .nav-link{
     padding: 10px 20px;
     margin: 3px;
+    font-weight: 500;
+    border-radius: 5px;
 }
-.navbar-dark .navbar-nav .nav-link:focus, 
-.navbar-dark .navbar-nav .nav-link:hover {
+.navbar-light .navbar-nav .nav-link:focus, 
+.navbar-light .navbar-nav .nav-link:hover {
     color: #fff;
     background-color: var(--btnhover);
-    border-radius: 5px;
 }
-.nav-link.active{
+.navbar-light .navbar-nav .nav-link.active{
+    color: #fff;
     background-color: var(--btn);
-    border-radius: 5px;
 }
 
 .dropdown-item:hover {
-    background-color: var(--btn);
+    background-color: var(--btn2);
     color: #fff;
 }
 .navbar-toggler:focus {
@@ -81,14 +89,18 @@ form input {
 
 /* Dashboard style */
 .home-stats .stat{
-    color: #fff;
-    background-color: var(--btn);
+    color: #222;
     padding: 15px;
     font-size: 17px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
     border-radius: 7px;
 }
 .home-stats .stat i{
+    padding: 15px;
+    color: #fff;
+    background-color: var(--btn2);
     margin-bottom: 5px;
+    border-radius: 50%;
     font-size: 35px;
 }
 .home-stats .stat p{
@@ -99,17 +111,18 @@ form input {
     font-size: 50px;
 }
 .home-stats .stat span a{
-    color: #fff;
+    color: #222;
     text-decoration: none;
 }
 .latest{
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
 .latest .card-header{
     padding: 12px;
     color: #fff;
-    background-color: #212529;
+    background-color: var(--btn2);
     font-weight: bold;
 }
 .latest ul li{
@@ -134,18 +147,17 @@ form input {
 /* Manage member Page style */
 /* Table */
 table{
-    box-shadow: 3px 4px 20px 0px #ccc;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
 }
 .main-row{
-    background-color: #212529;
+    background-color: var(--btn2);
     color: #fff;
 }
 tr td{
     vertical-align: middle;
 }
 .data-table{
-    background-color: #f8f8f8;
-    border-color: #ddd;
+    background-color: #fff;
     font-weight: 500;
 }
 .data-table .btn{
@@ -180,13 +192,14 @@ tr td{
     justify-content: flex-end;
     margin-bottom: 10px;
 }
+
 .categ{
-    box-shadow: 3px 4px 20px 0px #ccc;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
 }
 .categ .card-header{
     padding: 12px;
     color: #fff;
-    background-color: #5352ed;
+    background-color: var(--btn2);
     font-weight: bold;
 }
 .categ-list li {
@@ -236,3 +249,15 @@ tr td{
     width: 94px;
 }
 /* End Items Page style */
+
+
+
+/* Responsive Style */
+@media screen and (max-width: 768px){
+    .navbar-light .navbar-nav {
+        margin-top: 10px;
+    }
+    .latest .card {
+        margin: 5px;
+    }
+}
