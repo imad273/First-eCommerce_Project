@@ -1,43 +1,64 @@
-:root{
-    --btn: #1E3DE1;
-    --btnhover: #2444FF;
+* {
+    font-family: 'Ubuntu', sans-serif;
 }
+:root{
+    --btn: #ff5c62;
+    --btn2: #4F3AB7;
+    --btnhover: #ff434a;
+}
+
+::-webkit-scrollbar {
+    background-color: #ddd;
+    width: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--btn2);
+}
+
 .btn-primary{
     background-color: var(--btn);
     border-color: var(--btn);
 }
 .btn-primary:hover{
     background-color: var(--btnhover);
+    border-color: var(--btnhover);
 }
-body{
-    background-color: #eee;
+.btn-primary:active, .btn-primary:focus {
+    background-color: var(--btnhover);
+    border-color: var(--btnhover);
+    box-shadow: none;
+}
+.btn-primary:active:focus {
+    box-shadow: none;
 }
 /* Navbar style */
 .navbar {
     padding: 5px;
+    background-color: rgb(247, 247, 247);
 }
 .navbar-brand{
     letter-spacing: 5px;
-    font-weight: 600;
+    font-weight: 500;
 }
-
-.navbar-dark .navbar-nav .nav-link{
+.navbar-light .navbar-nav .nav-link{
     padding: 10px 20px;
     margin: 3px;
+    border-radius: 5px;
 }
-.navbar-dark .navbar-nav .nav-link:focus, 
-.navbar-dark .navbar-nav .nav-link:hover {
+.navbar-light .navbar-nav .nav-link:focus, 
+.navbar-light .navbar-nav .nav-link:hover {
     color: #fff;
     background-color: var(--btnhover);
-    border-radius: 5px;
 }
-.nav-link.active{
+.navbar-light .navbar-nav .nav-link.active{
+    color: #fff;
     background-color: var(--btn);
-    border-radius: 5px;
 }
-
+.navbar-light .navbar-nav .nav-link.active:hover {
+    background-color: var(--btnhover);
+}
 .dropdown-item:hover {
-    background-color: var(--btn);
+    background-color: var(--btn2);
     color: #fff;
 }
 .navbar-toggler:focus {
@@ -70,6 +91,28 @@ form input{
 /* End Login form style*/
 
 /* Start home style*/
+.hero {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+}
+.hero .content h1 {
+    font-size: 52px;
+    max-width: 560px;
+}
+.hero .content h1 span{
+    color: var(--btn2);
+}
+.hero .content p {
+    color: #666;
+}
+.hero .content .btn-primary{
+    background-color: var(--btn2);
+    border-color: var(--btn2);
+}
+.home .card {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
 .home .card .card-body{
     padding: 15px;
 }
@@ -80,6 +123,9 @@ form input{
 .home .title{
     font-weight: bold;
     font-size: 19px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .home .desc{
     max-height: 10px;
@@ -108,16 +154,36 @@ form input{
 /* End profil style*/
 
 /* start show items style*/
+.show-item {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
 .detail .card .card-header{
     color: #fff;
-    background-color: #3742fa;
+    background-color: var(--btn2);
+    border: 1px solid var(--btn2);
     font-weight: bold;
     padding: 12px;
 }
+.detail .card .card-body {
+    display: flex;
+    flex-wrap: wrap;
+}
+.detail .card .card-body .det {
+    width: 80%;
+}
+.detail .card .card-body .det p{
+    margin-bottom: 0px;
+}
+.detail .card .card-body .det span{
+    font-weight: 500;
+    margin-left: 8px;
+}
+
 .detail .card .card-body img{
     padding: 5px ;
     width: 200px; 
-    float: left;
 }
 .conf .btns{
     display: flex;
@@ -127,3 +193,14 @@ form input{
     margin-right: 8px;
 }
 /* End showItems page style*/
+
+
+/* Responsive Style */
+@media screen and (max-width: 768px){
+    .navbar-light .navbar-nav {
+        margin-top: 10px;
+    }
+    .detail .card .card-body .det {
+        width: 100%;
+    }
+}

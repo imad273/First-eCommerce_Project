@@ -27,7 +27,14 @@
                                     <li class="list-group-item">User name <span class="float-end fw-bold"><?php echo $info['UserName'] ?></span></li>
                                     <li class="list-group-item">Full name <span class="float-end fw-bold"><?php echo $info['FullName'] ?></span></li>  
                                     <li class="list-group-item">Email <span class="float-end fw-bold"><?php echo $info['Email'] ?></span></li>  
-                                    <li class="list-group-item">registered date <span class="float-end fw-bold"><?php echo $info['Date'] ?></span></li>
+                                    <li class="list-group-item">registered date <span class="float-end fw-bold">
+                                        <?php
+                                        $df_date = $info['Date'];
+                                        $date_stmt = $con->prepare("SELECT DATE_FORMAT('$df_date', '%b %D, %Y') AS date");
+                                        $date_stmt->execute();
+                                        $date = $date_stmt->fetch();
+                                        echo $date['date'];?>
+                                    </span></li>
                                 </ul>
                             </div>
                         </div> 

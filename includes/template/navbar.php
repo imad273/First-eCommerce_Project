@@ -1,5 +1,5 @@
-<!-- Navbar Template * -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<!-- Navbar Template -->
+<nav class="navbar navbar-expand-lg navbar-light">
   <div class="container">
     <a class="navbar-brand" href="index.php">TRUC<sapn style="color: var(--btn);">TRY</sapn></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,7 +33,7 @@
               if(isset($_SESSION['username'])){
                 echo $_SESSION['username'];
               } else {
-                echo "Account";
+                echo "<i class='bx bxs-user bx-tada bx-rotate-180' ></i>";
               }
             ?>
           </a>
