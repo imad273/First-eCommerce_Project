@@ -196,7 +196,20 @@ form input{
 }
 /* End showItems page style*/
 
-
+/* Footer style */
+footer {
+    background-color: rgb(247, 247, 247);
+}
+footer .lgoo span {
+    color: var(--btn2);
+}
+footer .footer-copyright {
+    border-top: 4px solid #fff;
+}
+footer ul li a {
+    text-decoration: none;
+}
+/* Footer Style */
 /* Responsive Style */
 @media screen and (max-width: 768px){
     .navbar-light .navbar-nav {
@@ -204,5 +217,9 @@ form input{
     }
     .detail .card .card-body .det {
         width: 100%;
+    }
+
+    footer {
+        text-align: center;
     }
 }
